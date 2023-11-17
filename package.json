@@ -1,0 +1,13 @@
+{
+  "name": "desafiooneescribo",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Desafio técnico 1 - Escribo: Implemente uma função que receba um número inteiro positivo e retorne o somatório de todos os valores inteiros divisíveis por 3 ou 5 que sejam inferiores ao número passado.",
+  "main": "application.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
