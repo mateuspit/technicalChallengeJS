@@ -17,7 +17,7 @@ inteiros divisíveis por 3 ou 5 que sejam inferiores ao número passado.
 **JavaScript**
 
 
-## Uso/Exemplo
+## Uso/Exemplo (Sistema operacional: Debian)
 1) Instalação do git:
 
 ```bash
@@ -52,15 +52,18 @@ sumThreeAndFiveMultiplesUntil(10);
 
 7) Exemplo com importação e utilização da função. Foi criado o arquivo application.js:
 ```javascript
-import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultipleUnitl.js"
+import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultipleUnitl.js";
 
-sumThreeAndFiveMultiplesUntil("a");
-sumThreeAndFiveMultiplesUntil(true);
-sumThreeAndFiveMultiplesUntil("5");
-sumThreeAndFiveMultiplesUntil(0);
-sumThreeAndFiveMultiplesUntil(-5);
-sumThreeAndFiveMultiplesUntil(10);
-sumThreeAndFiveMultiplesUntil(11);
+console.log(sumThreeAndFiveMultiplesUntil("a"));
+console.log(sumThreeAndFiveMultiplesUntil(true));
+console.log(sumThreeAndFiveMultiplesUntil(false));
+console.log(sumThreeAndFiveMultiplesUntil(-5));
+console.log(sumThreeAndFiveMultiplesUntil("10"));
+console.log(sumThreeAndFiveMultiplesUntil(0));
+console.log(sumThreeAndFiveMultiplesUntil(10));
+console.log(sumThreeAndFiveMultiplesUntil(11));
+console.log(sumThreeAndFiveMultiplesUntil(9999999999999999));
+console.log(sumThreeAndFiveMultiplesUntil(999999999999999));
 ```
 
 8) Executando o código JavaScript usando Node:
