@@ -1,12 +1,56 @@
 import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultiplesUntil.js";
+import readline from "readline";
+import testFunctionCases from "./testFunctionCases.js";
 
-console.log(sumThreeAndFiveMultiplesUntil("a"));
-console.log(sumThreeAndFiveMultiplesUntil(true));
-console.log(sumThreeAndFiveMultiplesUntil(false));
-console.log(sumThreeAndFiveMultiplesUntil(-5));
-console.log(sumThreeAndFiveMultiplesUntil("10"));
-console.log(sumThreeAndFiveMultiplesUntil(0));
-console.log(sumThreeAndFiveMultiplesUntil(10));
-console.log(sumThreeAndFiveMultiplesUntil(11));
-console.log(sumThreeAndFiveMultiplesUntil(9999999999999999));
-console.log(sumThreeAndFiveMultiplesUntil(999999999999999));
+const MENU_OPTIONS = {
+    ENTER_NUMBER: "Entre com qualquer número inteiro positivo para utilizar a função.",
+    TEST_CASES: '"Teste" para ver alguns casos de testes para a função.',
+    EXIT: '"Sair" para sair...'
+};
+
+const MENU = `Escolha uma opção:\n${MENU_OPTIONS.ENTER_NUMBER}\n${MENU_OPTIONS.TEST_CASES}\n${MENU_OPTIONS.EXIT}\nOpção: `;
+const CONSOLE_SPACE_BETWEEN_MENU = `\n\n\n\n\n\n\n`;
+const CONSOLE_SPACE_NEW_MENU = `\n`;
+const BACK_TO_MENU_TEXT = `Retornando para o menu...`;
+const EXIT_TEXT = `Saindo...`;
+const OPTION_TEST = `teste`;
+const OPTION_EXIT = `sair`;
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function printMenu() {
+    console.log(MENU);
+}
+
+function handleUserChoice(option) {
+    const parsedOption = option.toLowerCase();
+    switch (parsedOption) {
+        case OPTION_TEST:
+            console.log(CONSOLE_SPACE_BETWEEN_MENU);
+            testFunctionCases();
+            console.log(CONSOLE_SPACE_NEW_MENU);
+            console.log(BACK_TO_MENU_TEXT);
+            waitForUserInput();
+            break;
+        case OPTION_EXIT:
+            console.log(EXIT_TEXT);
+            rl.close();
+            process.exit(0);
+        default:
+            console.log(CONSOLE_SPACE_BETWEEN_MENU);
+            console.log(`Entrada: ${parsedOption}\nSaída: ${sumThreeAndFiveMultiplesUntil(parsedOption)}\n`);
+            console.log(CONSOLE_SPACE_NEW_MENU);
+            console.log(BACK_TO_MENU_TEXT);
+            waitForUserInput();
+            break;
+    }
+}
+
+function waitForUserInput() {
+    rl.question(MENU, handleUserChoice);
+}
+
+waitForUserInput();

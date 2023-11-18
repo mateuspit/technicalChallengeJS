@@ -52,7 +52,7 @@ sumThreeAndFiveMultiplesUntil(10);
 
 7) Exemplo com importação e utilização da função. Foi criado o arquivo application.js:
 ```javascript
-import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultipleUnitl.js";
+import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultiplesUntil.js";
 
 console.log(sumThreeAndFiveMultiplesUntil("a"));
 console.log(sumThreeAndFiveMultiplesUntil(true));
@@ -68,7 +68,7 @@ console.log(sumThreeAndFiveMultiplesUntil(999999999999999));
 
 8) Executando o código JavaScript usando Node:
 ```bash
-node application.js
+npm run start
 ```
 
 
@@ -79,7 +79,7 @@ node application.js
 
 ## Observações
 
-Em caso de erro, também é possível interromper a continuação da aplicação que utiliza a função por meio de um throw new Error, como, por exemplo:
+Em caso de erro, também seria possível interromper a continuação da aplicação que utiliza a função por meio de um throw new Error, como, por exemplo:
 ```javascript
 throw new Error(ERROR_TYPE);
 ```
