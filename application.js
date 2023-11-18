@@ -1,4 +1,4 @@
-import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultipleUnitl.js";
+import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultiplesUntil.js";
 
 console.log(sumThreeAndFiveMultiplesUntil("a"));
 console.log(sumThreeAndFiveMultiplesUntil(true));

@@ -74,7 +74,31 @@ node application.js
 
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/7bDSH0Z.png)
+![App Screenshot](https://i.imgur.com/84HEXGF.png)
+
+
+## Observações
+
+Em caso de erro, também é possível interromper a continuação da aplicação que utiliza a função por meio de um throw new Error, como, por exemplo:
+```javascript
+throw new Error(ERROR_TYPE);
+```
+Outra abordagem para simplificar o código seria utilizando apenas um retorno de erro para a validação da entrada e um retorno de erro para overflow.
+Contudo, ao pensar na interação com o front-end, optei por fornecer ao usuário explicações claras em quatro possibilidades de erro:
+1) A entrada não é um número.
+2) A entrada não é um número positivo.
+3) Overflow no número de entrada.
+4) Overflow durante os cálculos do programa.
+
+É importante observar que quando a string apresentada é a representação de um número, a entrada é identificada como uma string e transformada em número.
+
+Constantes foram declaradas para evitar o uso de "magic numbers" e "magic strings".
+
+
+
+
+
+
 
 
 ## Autor
