@@ -74,7 +74,7 @@ node application.js
 
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/b2pHMxW.png)
+![App Screenshot](https://i.imgur.com/7bDSH0Z.png)
 
 
 ## Autor
