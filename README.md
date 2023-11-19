@@ -16,10 +16,11 @@ inteiros divisíveis por 3 ou 5 que sejam inferiores ao número passado.
 
 **JavaScript**
 
+**Docker**
 
-## Uso/Exemplo (Sistema operacional: Debian)
+
+## Uso com GitHub
 1) Instalação do git:
-
 ```bash
 sudo apt update
 
@@ -29,9 +30,21 @@ sudo apt install git
 ```
 2) Instalação do node:
 ```bash
-curl -sL https://deb.nodesource.com/setup\_13.x | sudo -E bash -
+sudo apt-get update
 
-sudo apt install nodejs
+sudo apt-get install -y ca-certificates curl gnupg
+
+sudo mkdir -p /etc/apt/keyrings
+
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+NODE_MAJOR=20
+
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+
+sudo apt-get update
+
+sudo apt-get install nodejs -y
 ```
 3) Baixar o repositorio do git em sua maquina:
 
@@ -39,7 +52,7 @@ sudo apt install nodejs
 git clone https://github.com/mateuspit/tecnicalChallangeJS.git
 ```
 
-4) A função está no arquivo: sumThreeAndFiveMultipleUnitl.js
+4) A função requisitada está no arquivo: `sumThreeAndFiveMultipleUnitl.js`
 5) Para utiliza-la você pode importa-la:
 ```javascript
 import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultipleUnitl.js"
@@ -47,60 +60,114 @@ import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultipleUnitl.js"
 6) Exemplo de utilização após importa-la:
 
 ```javascript
-sumThreeAndFiveMultiplesUntil(10);
+let input = 10;
+
+sumThreeAndFiveMultiplesUntil(input);
 ```
 
-7) Exemplo com importação e utilização da função. Foi criado o arquivo application.js:
-```javascript
-import sumThreeAndFiveMultiplesUntil from "./sumThreeAndFiveMultiplesUntil.js";
-
-console.log(sumThreeAndFiveMultiplesUntil("a"));
-console.log(sumThreeAndFiveMultiplesUntil(true));
-console.log(sumThreeAndFiveMultiplesUntil(false));
-console.log(sumThreeAndFiveMultiplesUntil(-5));
-console.log(sumThreeAndFiveMultiplesUntil("10"));
-console.log(sumThreeAndFiveMultiplesUntil(0));
-console.log(sumThreeAndFiveMultiplesUntil(10));
-console.log(sumThreeAndFiveMultiplesUntil(11));
-console.log(sumThreeAndFiveMultiplesUntil(9999999999999999));
-console.log(sumThreeAndFiveMultiplesUntil(999999999999999));
-```
-
-8) Executando o código JavaScript usando Node:
+7) Executando o código JavaScript usando Node:
 ```bash
-npm run start
+node application.js
 ```
 
+#### Screenshots
 
-## Screenshots
-
-![App Screenshot](https://i.imgur.com/84HEXGF.png)
+![App Screenshot](https://i.imgur.com/LbihnFh.png)
 
 
+## Uso com Docker
+
+1) Instalação do Docker:
+```bash
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+sudo apt-get update
+
+sudo apt-get install ca-certificates curl gnupg
+
+sudo install -m 0755 -d /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+2) Verificar instalação do Docker:
+```bash
+sudo docker run hello-world
+```
+
+3) Baixar a imagem `matezao/technical-challenge-js-barcelos` do Docker Hub:
+```bash
+docker pull matezao/technical-challenge-js-barcelos:latest
+```
+
+4) Verificar se a imagem foi baixada: 
+```bash
+docker images
+```
+
+5) Montar a imagem 
+```bash
+docker run -it matezao/technical-challenge-js-barcelos:latest
+```
+
+#### Screenshots
+
+![App Screenshot](https://i.imgur.com/qoU5Iqm.png)
+
+## Aplicação
+
+Para a utilização da função implementada em JavaScript, foi criado um arquivo chamado `application.js` que solicita ao usuário a inserção de uma entrada, com tratamento de possíveis erros.
+
+
+#### Screenshots
+
+![App Screenshot](https://i.imgur.com/zDVOljA.png)
+## Testes
+
+Foi desenvolvida uma função denominada `testFunctionCases()`, a qual utiliza um array de entradas de teste para gerar saídas conforme o comportamento esperado da função requisitada.
+
+#### Possíveis erros
+
+1. A entrada recebida não é um número!
+2. O número recebido não é positivo!
+3. Overflow no número de entrada!
+4. Overflow durante a soma!
+
+#### Screenshots
+
+![App Screenshot](https://i.imgur.com/oXrgVKR.png)
 ## Observações
 
-Em caso de erro, também seria possível interromper a continuação da aplicação que utiliza a função por meio de um throw new Error, como, por exemplo:
+Em situações de erro, também é possível interromper a execução da aplicação, que utiliza a função, por meio do comando `throw new Error`, como ilustrado no exemplo abaixo:
 ```javascript
 throw new Error(ERROR_TYPE);
 ```
-Outra abordagem para simplificar o código seria utilizando apenas um retorno de erro para a validação da entrada e um retorno de erro para overflow.
-Contudo, ao pensar na interação com o front-end, optei por fornecer ao usuário explicações claras em quatro possibilidades de erro:
-1) A entrada não é um número.
-2) A entrada não é um número positivo.
-3) Overflow no número de entrada.
-4) Overflow durante os cálculos do programa.
+Outra abordagem para simplificar o código é utilizar um único retorno de erro para a validação da entrada e outro para casos de overflow. No entanto, ao considerar a interação com o front-end, optei por fornecer ao usuário explicações claras para os quatro possíveis cenários de erro citados acima.
 
-É importante observar que quando a string apresentada é a representação de um número, a entrada é identificada como uma string e transformada em número.
+É relevante notar que, quando a string fornecida representa um número, a entrada é convertida para o tipo number.
 
 Constantes foram declaradas para evitar o uso de "magic numbers" e "magic strings".
+## Referências
 
+- [Instalação do GIT](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Instalação do Node](https://github.com/nodesource/distributions)
+- [Instalação do Docker](https://docs.docker.com/engine/install/ubuntu/)
+- [Guia Markdown](https://www.markdownguide.org/)
+## Repositórios
 
-
-
-
-
-
-
+- [GitHub](https://github.com/mateuspit/technicalChallengeJS)
+- [DockerHub](https://hub.docker.com/repository/docker/matezao/technical-challenge-js-barcelos/general)
 ## Autor
 
 - [@Mateus Barcelos](https://www.github.com/mateuspit)

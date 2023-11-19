@@ -9,7 +9,7 @@ const MENU_OPTIONS = {
 };
 
 const MENU = `Escolha uma opção:\n${MENU_OPTIONS.ENTER_NUMBER}\n${MENU_OPTIONS.TEST_CASES}\n${MENU_OPTIONS.EXIT}\nOpção: `;
-const CONSOLE_SPACE_BETWEEN_MENU = `\n\n\n\n\n\n\n`;
+const CONSOLE_SPACE_BETWEEN_MENU = `\n\n`;
 const CONSOLE_SPACE_NEW_MENU = `\n`;
 const BACK_TO_MENU_TEXT = `Retornando para o menu...`;
 const EXIT_TEXT = `Saindo...`;
@@ -20,10 +20,6 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-
-function printMenu() {
-    console.log(MENU);
-}
 
 function handleUserChoice(option) {
     const parsedOption = option.toLowerCase();
