@@ -163,7 +163,8 @@ Constantes foram declaradas para evitar o uso de "magic numbers" e "magic string
 - [Instalação do GIT](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Instalação do Node](https://github.com/nodesource/distributions)
 - [Instalação do Docker](https://docs.docker.com/engine/install/ubuntu/)
-- [Guia Markdown](https://www.markdownguide.org/)
+- [Documentação Markdown](https://www.markdownguide.org/)
+- [Documentação Node](https://nodejs.org/en/learn)
 ## Repositórios
 
 - [GitHub](https://github.com/mateuspit/technicalChallengeJS)
