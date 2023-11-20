@@ -9,8 +9,6 @@ const MENU_OPTIONS = {
 };
 
 const MENU = `Escolha uma opção:\n${MENU_OPTIONS.ENTER_NUMBER}\n${MENU_OPTIONS.TEST_CASES}\n${MENU_OPTIONS.EXIT}\nOpção: `;
-const CONSOLE_SPACE_BETWEEN_MENU = `\n\n`;
-const CONSOLE_SPACE_NEW_MENU = `\n`;
 const BACK_TO_MENU_TEXT = `Retornando para o menu...`;
 const EXIT_TEXT = `Saindo...`;
 const OPTION_TEST = `teste`;
@@ -25,9 +23,8 @@ function handleUserChoice(option) {
     const parsedOption = option.toLowerCase();
     switch (parsedOption) {
         case OPTION_TEST:
-            console.log(CONSOLE_SPACE_BETWEEN_MENU);
+            console.clear()
             testFunctionCases();
-            console.log(CONSOLE_SPACE_NEW_MENU);
             console.log(BACK_TO_MENU_TEXT);
             waitForUserInput();
             break;
@@ -36,9 +33,8 @@ function handleUserChoice(option) {
             rl.close();
             process.exit(0);
         default:
-            console.log(CONSOLE_SPACE_BETWEEN_MENU);
+            console.clear()
             console.log(`Entrada: ${parsedOption}\nSaída: ${sumThreeAndFiveMultiplesUntil(parsedOption)}\n`);
-            console.log(CONSOLE_SPACE_NEW_MENU);
             console.log(BACK_TO_MENU_TEXT);
             waitForUserInput();
             break;
